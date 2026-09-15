@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GBJamGame"
-run/main_scene="uid://cshrpjtxeqwo2"
+run/main_scene="uid://derm2k3lwnvo5"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -49,8 +49,9 @@ invert_level={
 [layer_names]
 
 2d_physics/layer_1="Player"
-2d_physics/layer_2="NonInvertedDomain"
-2d_physics/layer_3="InvertedDomain"
+2d_physics/layer_2="Normal"
+2d_physics/layer_3="Inverted"
+2d_physics/layer_4="Shared"
 
 [physics]
 

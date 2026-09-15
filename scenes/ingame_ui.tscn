@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://b4docjp5doas8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_arpr7"]
+font_size = 30
+
+[node name="IngameUI" type="CanvasLayer" unique_id=73858269]
+
+[node name="InvertsLeftLabel" type="Label" parent="." unique_id=1886008058]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Inverts left: n"
+label_settings = SubResource("LabelSettings_arpr7")
