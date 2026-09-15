@@ -49,8 +49,9 @@ invert_level={
 [layer_names]
 
 2d_physics/layer_1="Player"
-2d_physics/layer_2="NonInvertedDomain"
-2d_physics/layer_3="InvertedDomain"
+2d_physics/layer_2="Normal"
+2d_physics/layer_3="Inverted"
+2d_physics/layer_4="Shared"
 
 [physics]
 

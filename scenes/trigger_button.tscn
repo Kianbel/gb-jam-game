@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://b0cwgm7o46k7y"]
+
+[ext_resource type="Texture2D" uid="uid://ca582qd42k6ge" path="res://assets/kenney_simplified-platformer-pack/PNG/Tiles/platformPack_tile053.png" id="1_mi6dp"]
+[ext_resource type="Script" uid="uid://dvskrhw5kp42l" path="res://scripts/button.gd" id="1_rhj8v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rrlpr"]
+size = Vector2(54, 14)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0hacw"]
+radius = 18.0
+
+[node name="TriggerButton" type="StaticBody2D" unique_id=379421292]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_rhj8v")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=89361386]
+texture = ExtResource("1_mi6dp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1960869653]
+position = Vector2(0, 25)
+shape = SubResource("RectangleShape2D_rrlpr")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1736388735]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=68295991]
+position = Vector2(0, 17)
+shape = SubResource("CircleShape2D_0hacw")

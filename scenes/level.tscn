@@ -1,6 +1,32 @@
 [gd_scene format=3 uid="uid://bjyrq71v8y0ll"]
 
 [ext_resource type="Script" uid="uid://dqvml6ckyod78" path="res://scripts/level.gd" id="1_2q6dc"]
+[ext_resource type="PackedScene" uid="uid://7uxy3ia74fh" path="res://scenes/utils/inverted.tscn" id="2_w8frs"]
+[ext_resource type="PackedScene" uid="uid://cwm2hsiw5088b" path="res://scenes/utils/non_inverted.tscn" id="3_mx8sn"]
+[ext_resource type="PackedScene" uid="uid://8cqmq3vbipvd" path="res://scenes/components/hitbox_component.tscn" id="4_mx8sn"]
 
-[node name="Level" type="Node" unique_id=1450436430]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yqjtg"]
+
+[node name="Level" type="Node" unique_id=1450436430 node_paths=PackedStringArray("inverted_domain", "noninverted_domain", "inverted_tilemaplayer", "noninverted_tilemaplayer")]
 script = ExtResource("1_2q6dc")
+inverted_domain = NodePath("Inverted")
+noninverted_domain = NodePath("NonInverted")
+inverted_tilemaplayer = NodePath("Inverted/TileMapLayer")
+noninverted_tilemaplayer = NodePath("NonInverted/TileMapLayer")
+
+[node name="Inverted" parent="." unique_id=531270631 instance=ExtResource("2_w8frs")]
+
+[node name="NonInverted" parent="." unique_id=1508748417 instance=ExtResource("3_mx8sn")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=61664674]
+zoom = Vector2(0.5, 0.5)
+
+[node name="LowerBoundary" parent="." unique_id=2015609645 instance=ExtResource("4_mx8sn")]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LowerBoundary" unique_id=1741147963]
+shape = SubResource("WorldBoundaryShape2D_yqjtg")
+
+[editable path="Inverted"]
+[editable path="NonInverted"]

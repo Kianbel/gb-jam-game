@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bjyrq71v8y0ll" path="res://scenes/level.tscn" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://8v135ehyw76x" path="res://scenes/player.tscn" id="1_uwrxv"]
-[ext_resource type="PackedScene" uid="uid://b0cwgm7o46k7y" path="res://scenes/trigger_button.tscn" id="3_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://b0cwgm7o46k7y" path="res://scenes/button.tscn" id="3_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://dte3ro7xjj4vw" path="res://scenes/spike.tscn" id="6_0tnpc"]
 
 [node name="Game" type="Node2D" unique_id=496636410]

@@ -1,13 +1,23 @@
 [gd_scene format=3 uid="uid://8v135ehyw76x"]
 
 [ext_resource type="Texture2D" uid="uid://cu0eiqi57stw4" path="res://assets/kenney_simplified-platformer-pack/Tilesheet/platformerPack_character.png" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://cmx0eabybwn6k" path="res://scripts/player.gd" id="1_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://4ten16o0e58f" path="res://scenes/components/hurtbox_component.tscn" id="2_g2els"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0hacw"]
 radius = 21.0
 height = 64.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6yrlg"]
+radius = 20.0
+height = 64.0
+
 [node name="Player" type="CharacterBody2D" unique_id=667181375]
-collision_mask = 0
+collision_mask = 12
+script = ExtResource("1_qhqgy")
+speed = 500.0
+acceleration = 2000.0
+friction = 7000.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1705059376]
 texture = ExtResource("1_3vyb7")
@@ -17,3 +27,12 @@ region_rect = Rect2(14, 24, 70, 76)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=885696290]
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_0hacw")
+
+[node name="HurtboxComponent" parent="." unique_id=1971434348 instance=ExtResource("2_g2els")]
+collision_layer = 0
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=339068129]
+shape = SubResource("CapsuleShape2D_6yrlg")
+
+[connection signal="area_entered" from="HurtboxComponent" to="HurtboxComponent" method="_on_area_entered"]
