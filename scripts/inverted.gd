@@ -1,0 +1,2 @@
+class_name InvertedGroup
+extends Node2D

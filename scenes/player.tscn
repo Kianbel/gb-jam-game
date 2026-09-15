@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://8v135ehyw76x"]
+
+[ext_resource type="Texture2D" uid="uid://cu0eiqi57stw4" path="res://assets/kenney_simplified-platformer-pack/Tilesheet/platformerPack_character.png" id="1_3vyb7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0hacw"]
+radius = 21.0
+height = 64.0
+
+[node name="Player" type="CharacterBody2D" unique_id=667181375]
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1705059376]
+texture = ExtResource("1_3vyb7")
+region_enabled = true
+region_rect = Rect2(14, 24, 70, 76)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=885696290]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_0hacw")

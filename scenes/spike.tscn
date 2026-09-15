@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dte3ro7xjj4vw"]
+
+[ext_resource type="Script" uid="uid://dasjxqkc78ku1" path="res://scripts/spike.gd" id="1_d2mqm"]
+[ext_resource type="Texture2D" uid="uid://dnip3jjeref01" path="res://assets/kenney_simplified-platformer-pack/PNG/Tiles/platformPack_tile043.png" id="1_ljd5v"]
+[ext_resource type="PackedScene" uid="uid://4ten16o0e58f" path="res://scenes/hurtbox_component.tscn" id="2_7a7y0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hacw"]
+size = Vector2(58, 29)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rrlpr"]
+size = Vector2(58, 29)
+
+[node name="Spike" type="StaticBody2D" unique_id=610234305]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_d2mqm")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=514041874]
+texture = ExtResource("1_ljd5v")
+
+[node name="HurtboxComponent" parent="." unique_id=1971434348 instance=ExtResource("2_7a7y0")]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=333532353]
+position = Vector2(1, 17.5)
+shape = SubResource("RectangleShape2D_0hacw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=866305151]
+position = Vector2(1, 17.5)
+shape = SubResource("RectangleShape2D_rrlpr")
+disabled = true

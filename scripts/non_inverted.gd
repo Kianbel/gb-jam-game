@@ -1,0 +1,2 @@
+class_name NonInvertedGroup
+extends Node2D
