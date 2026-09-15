@@ -6,14 +6,14 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0hacw"]
 radius = 21.0
-height = 64.0
+height = 58.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6yrlg"]
 radius = 20.0
 height = 64.0
 
 [node name="Player" type="CharacterBody2D" unique_id=667181375]
-collision_mask = 12
+collision_mask = 14
 script = ExtResource("1_qhqgy")
 speed = 500.0
 acceleration = 2000.0
@@ -25,7 +25,6 @@ region_enabled = true
 region_rect = Rect2(14, 24, 70, 76)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=885696290]
-position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_0hacw")
 
 [node name="HurtboxComponent" parent="." unique_id=1971434348 instance=ExtResource("2_g2els")]
@@ -34,5 +33,8 @@ collision_mask = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=339068129]
 shape = SubResource("CapsuleShape2D_6yrlg")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=401007101]
+zoom = Vector2(0.5, 0.5)
 
 [connection signal="area_entered" from="HurtboxComponent" to="HurtboxComponent" method="_on_area_entered"]

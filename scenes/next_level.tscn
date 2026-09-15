@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bw4xcncfigb7s"]
+
+[ext_resource type="Texture2D" uid="uid://baef3ealks2i1" path="res://assets/kenney_simplified-platformer-pack/PNG/Tiles/platformPack_tile061.png" id="1_rf0ph"]
+[ext_resource type="Script" uid="uid://sjqyj2t1jdh7" path="res://scripts/next_level.gd" id="1_sd4vo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rrlpr"]
+size = Vector2(64, 64)
+
+[node name="NextLevel" type="Area2D" unique_id=2104726176]
+collision_layer = 0
+script = ExtResource("1_sd4vo")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1153637877]
+texture = ExtResource("1_rf0ph")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=155967053]
+shape = SubResource("RectangleShape2D_rrlpr")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
