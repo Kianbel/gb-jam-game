@@ -4,14 +4,14 @@ extends CharacterBody2D
 
 
 @export_category("Movement")
-@export var speed := 300.0
-@export var acceleration := 1500.0
+@export var speed := 90.0
+@export var acceleration := 1000.0
 @export var friction := 2000.0
 
 @export_category("Jump")
-@export var jump_velocity := -500.0
-@export var gravity := 1200.0
-@export var fall_gravity := 1800.0
+@export var jump_velocity := -200.0
+@export var gravity := 700.0
+@export var fall_gravity := 900.0
 @export var max_fall_speed := 900.0
 
 @export var coyote_time := 0.12
@@ -26,12 +26,14 @@ var jump_buffer_timer := 0.0
 @onready var current_level: Level = get_parent()
 @onready var inverts_amount: int = current_level.MAX_INVERTS
 
-@onready var sprite2d: Sprite2D = $Sprite2D
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hurtbox: Area2D = $HurtboxComponent
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("invert_level"):
 		handle_invert()
+		
+		
 
 func _physics_process(delta: float) -> void:
 	update_coyote_time(delta)
@@ -87,12 +89,12 @@ func handle_movement(delta: float) -> void:
 
 func update_sprite() -> void:
 	if velocity.x < 0:
-		sprite2d.flip_h = true
+		animated_sprite_2d.flip_h = true
 	elif velocity.x > 0:
-		sprite2d.flip_h = false
+		animated_sprite_2d.flip_h = false
 
 func handle_invert() -> void:
-	if inverts_amount <= 1:
+	if inverts_amount < 1:
 		print("you inverted too much")
 		get_tree().reload_current_scene()
 		return
@@ -106,9 +108,13 @@ func handle_invert() -> void:
 
 		hurtbox.set_collision_mask_value(NORMAL_COLLISION, false)
 		hurtbox.set_collision_mask_value(INVERTED_COLLISION, true)
+	
+		animated_sprite_2d.set_animation("inverted_idle")
 	else:
 		set_collision_mask_value(NORMAL_COLLISION, true)
 		set_collision_mask_value(INVERTED_COLLISION, false)
 
 		hurtbox.set_collision_mask_value(NORMAL_COLLISION, true)
 		hurtbox.set_collision_mask_value(INVERTED_COLLISION, false)
+		
+		animated_sprite_2d.set_animation("normal_idle")

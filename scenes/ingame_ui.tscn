@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b4docjp5doas8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_arpr7"]
-font_size = 30
+font_size = 8
 
 [node name="IngameUI" type="CanvasLayer" unique_id=73858269]
 
