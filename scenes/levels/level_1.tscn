@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dte3ro7xjj4vw" path="res://scenes/spike.tscn" id="4_oc4kc"]
 [ext_resource type="PackedScene" uid="uid://8v135ehyw76x" path="res://scenes/player.tscn" id="4_x42e6"]
 [ext_resource type="PackedScene" uid="uid://b4docjp5doas8" path="res://scenes/ingame_ui.tscn" id="5_6761a"]
+[ext_resource type="PackedScene" uid="uid://wirdy57unx78" path="res://scenes/dart_trap.tscn" id="5_dga24"]
 [ext_resource type="PackedScene" uid="uid://bw4xcncfigb7s" path="res://scenes/next_level.tscn" id="5_sk5k4"]
 [ext_resource type="PackedScene" uid="uid://b0cwgm7o46k7y" path="res://scenes/trigger_button.tscn" id="8_s8va5"]
 [ext_resource type="PackedScene" uid="uid://8cqmq3vbipvd" path="res://scenes/components/hitbox_component.tscn" id="9_dga24"]
@@ -22,31 +23,24 @@ noninverted_tilemaplayer = NodePath("NonInverted/TileMapLayer")
 [node name="Inverted" parent="." unique_id=531270631 instance=ExtResource("2_4nkto")]
 
 [node name="TileMapLayer" parent="Inverted" index="0" unique_id=1180848138]
-tile_map_data = PackedByteArray("AAD7/wgAAQALAAMAAAD8/wgAAQAMAAMAAAD9/wgAAQAMAAMAAAD+/wgAAQAMAAMAAAD//wgAAQAMAAMAAAAAAAgAAQAMAAMAAAABAAgAAQAMAAMAAAACAAgAAQAMAAMAAAADAAgAAQAMAAMAAAAEAAgAAQAMAAMAAAAFAAgAAQAMAAMAAAAGAAgAAQAMAAMAAAAHAAgAAQAMAAMAAAAIAAgAAQAMAAMAAAAJAAgAAQAMAAMAAAAKAAgAAQAMAAMAAAALAAgAAQAMAAMAAAAMAAgAAQAMAAMAAAANAAgAAQANAAMAAAANAAkAAQANAAUAAAAMAAkAAQAMAAUAAAALAAkAAQAMAAUAAAAKAAkAAQAMAAUAAAAJAAkAAQAMAAUAAAAIAAkAAQAMAAUAAAAHAAkAAQAMAAUAAAAGAAkAAQAMAAUAAAAFAAkAAQAMAAUAAAAEAAkAAQAMAAUAAAADAAkAAQAMAAUAAAACAAkAAQAMAAUAAAABAAkAAQAMAAUAAAAAAAkAAQAMAAUAAAD//wkAAQAMAAUAAAD+/wkAAQAMAAUAAAD9/wkAAQAMAAUAAAD8/wkAAQAMAAUAAAD7/wkAAQALAAUAAAA=")
+tile_map_data = PackedByteArray("AAD7/wgAAQALAAMAAAD8/wgAAQAMAAMAAAD9/wgAAQAMAAMAAAD+/wgAAQAMAAMAAAD//wgAAQAMAAMAAAAAAAgAAQAMAAMAAAABAAgAAQAMAAMAAAACAAgAAQAMAAMAAAADAAgAAQAMAAMAAAAEAAgAAQAMAAMAAAAFAAgAAQAMAAMAAAAGAAgAAQAMAAMAAAAHAAgAAQAMAAMAAAAIAAgAAQAMAAMAAAAJAAgAAQAMAAMAAAAKAAgAAQAMAAMAAAALAAgAAQAMAAMAAAAMAAgAAQAMAAMAAAANAAgAAQANAAMAAAANAAkAAQANAAUAAAAMAAkAAQAMAAUAAAALAAkAAQAMAAUAAAAKAAkAAQAMAAUAAAAJAAkAAQAMAAUAAAAIAAkAAQAMAAUAAAAHAAkAAQAMAAUAAAAGAAkAAQAMAAUAAAAFAAkAAQAMAAUAAAAEAAkAAQAMAAUAAAADAAkAAQAMAAUAAAACAAkAAQAMAAUAAAABAAkAAQAMAAUAAAAAAAkAAQAMAAUAAAD//wkAAQAMAAUAAAD+/wkAAQAMAAUAAAD9/wkAAQAMAAUAAAD8/wkAAQAMAAUAAAD7/wkAAQALAAUAAAD7/wYAAQAPAAgAAAD//wYAAQARAAgAAAD8/wYAAQAQAAcAAAD9/wYAAQAQAAcAAAD+/wYAAQAQAAcAAAA=")
 
 [node name="NonInverted" parent="." unique_id=1508748417 instance=ExtResource("3_fcfvj")]
 
 [node name="TileMapLayer" parent="NonInverted" index="0" unique_id=2026888511]
-tile_map_data = PackedByteArray("AAD7/wkAAQABAAUAAAD8/wkAAQACAAUAAAD9/wkAAQACAAUAAAD+/wkAAQACAAUAAAD//wkAAQACAAUAAAAAAAkAAQACAAUAAAABAAkAAQACAAUAAAACAAkAAAACAAUAAAADAAgAAAACAAMAAAADAAkAAAACAAUAAAAEAAgAAQACAAMAAAAEAAkAAQACAAUAAAAFAAgAAQACAAMAAAAFAAkAAQACAAUAAAAGAAgAAQACAAMAAAAGAAkAAQACAAUAAAAHAAgAAQACAAMAAAAHAAkAAQACAAUAAAAIAAgAAQACAAMAAAAIAAkAAQACAAUAAAAJAAgAAQACAAMAAAAJAAkAAQACAAUAAAAKAAgAAQACAAMAAAAKAAkAAQACAAUAAAALAAgAAQACAAMAAAALAAkAAQACAAUAAAAMAAgAAQACAAMAAAAMAAkAAQACAAUAAAANAAgAAQADAAMAAAANAAkAAQADAAUAAAD7/wgAAQABAAMAAAD8/wgAAQACAAMAAAD9/wgAAQACAAMAAAD+/wgAAQACAAMAAAD//wgAAQACAAMAAAAAAAgAAQACAAMAAAABAAgAAQACAAMAAAACAAgAAAACAAMAAAA=")
-
-[node name="Spike" parent="NonInverted" unique_id=610234305 node_paths=PackedStringArray("trigger") instance=ExtResource("4_oc4kc")]
-position = Vector2(24, 121)
-trigger = NodePath("../TriggerButton")
-
-[node name="Spike2" parent="NonInverted" unique_id=1223215915 node_paths=PackedStringArray("trigger") instance=ExtResource("4_oc4kc")]
-position = Vector2(40, 121)
-trigger = NodePath("../TriggerButton")
-
-[node name="Spike3" parent="NonInverted" unique_id=937704251 node_paths=PackedStringArray("trigger") instance=ExtResource("4_oc4kc")]
-position = Vector2(56, 121)
-trigger = NodePath("../TriggerButton")
-
-[node name="Spike4" parent="NonInverted" unique_id=364502496 node_paths=PackedStringArray("trigger") instance=ExtResource("4_oc4kc")]
-position = Vector2(72, 121)
-trigger = NodePath("../TriggerButton")
+tile_map_data = PackedByteArray("AAD7/wkAAQABAAUAAAD8/wkAAQACAAUAAAD9/wkAAQACAAUAAAD+/wkAAQACAAUAAAD//wkAAQACAAUAAAAAAAkAAQACAAUAAAABAAkAAQACAAUAAAACAAkAAQACAAUAAAADAAgAAQACAAMAAAADAAkAAQACAAUAAAAEAAgAAQACAAMAAAAEAAkAAQACAAUAAAAFAAgAAQAEAAMAAAAFAAkAAQACAAUAAAAGAAgAAQACAAMAAAAGAAkAAQACAAUAAAAHAAgAAQACAAMAAAAHAAkAAQACAAUAAAAIAAgAAQACAAMAAAAIAAkAAQACAAUAAAAJAAgAAQACAAMAAAAJAAkAAQACAAUAAAAKAAgAAQACAAMAAAAKAAkAAQACAAUAAAALAAgAAQACAAMAAAALAAkAAQACAAUAAAAMAAgAAQACAAMAAAAMAAkAAQACAAUAAAANAAgAAQADAAMAAAANAAkAAQADAAUAAAD7/wgAAQABAAMAAAD8/wgAAQACAAMAAAD9/wgAAQACAAMAAAD+/wgAAQACAAMAAAD//wgAAQACAAMAAAAAAAgAAQACAAMAAAABAAgAAQACAAMAAAACAAgAAQACAAMAAAAFAAcAAQAIAAEAAAA=")
 
 [node name="TriggerButton" parent="NonInverted" unique_id=379421292 instance=ExtResource("8_s8va5")]
-position = Vector2(-8, 121)
+position = Vector2(24, 121)
+
+[node name="DartTrap" parent="NonInverted" unique_id=1722376389 node_paths=PackedStringArray("trigger") instance=ExtResource("5_dga24")]
+position = Vector2(73, 120)
+trigger = NodePath("../TriggerButton")
+
+[node name="Spike2" parent="NonInverted" unique_id=1769727501 node_paths=PackedStringArray("trigger") instance=ExtResource("4_oc4kc")]
+position = Vector2(24, 88)
+rotation = 3.1415925
+trigger = NodePath("../TriggerButton")
 
 [node name="NextLevel" parent="." unique_id=2104726176 instance=ExtResource("5_sk5k4")]
 position = Vector2(200, 120)

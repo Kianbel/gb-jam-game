@@ -40,6 +40,7 @@ size = Vector2(10, 16)
 [node name="Player" type="CharacterBody2D" unique_id=667181375]
 collision_mask = 14
 script = ExtResource("1_qhqgy")
+jump_velocity = -210.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=962854642]
 position = Vector2(-75, -13)

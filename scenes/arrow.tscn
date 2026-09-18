@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://ki4ddxymepnw"]
+
+[ext_resource type="Texture2D" uid="uid://br4dk1ywd78jb" path="res://assets/sand_tileset.png" id="1_23jat"]
+[ext_resource type="Script" uid="uid://cllele4qvkoo2" path="res://scripts/arrow.gd" id="1_q8ifc"]
+[ext_resource type="PackedScene" uid="uid://8cqmq3vbipvd" path="res://scenes/components/hitbox_component.tscn" id="1_umosx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8ifc"]
+atlas = ExtResource("1_23jat")
+region = Rect2(240, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ckq1"]
+atlas = ExtResource("1_23jat")
+region = Rect2(80, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_umosx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8ifc")
+}],
+"loop": 1,
+"name": &"sand_invert",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ckq1")
+}],
+"loop": 1,
+"name": &"sand_normal",
+"speed": 5.0
+}]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_hmv1p"]
+a = Vector2(-8, 0)
+b = Vector2(7, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_q8ifc"]
+a = Vector2(-8, 0)
+b = Vector2(7, 0)
+
+[node name="Arrow" type="RigidBody2D" unique_id=968934795]
+script = ExtResource("1_q8ifc")
+speed = 350
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=583294622]
+sprite_frames = SubResource("SpriteFrames_umosx")
+animation = &"sand_normal"
+
+[node name="HitboxComponent" parent="." unique_id=2015609645 instance=ExtResource("1_umosx")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=858226181]
+shape = SubResource("SegmentShape2D_hmv1p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1098241765]
+visible = false
+shape = SubResource("SegmentShape2D_q8ifc")
+disabled = true
+
+[connection signal="body_entered" from="HitboxComponent" to="." method="_on_hitbox_component_body_entered"]

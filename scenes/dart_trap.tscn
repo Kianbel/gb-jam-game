@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://wirdy57unx78"]
+
+[ext_resource type="Texture2D" uid="uid://br4dk1ywd78jb" path="res://assets/sand_tileset.png" id="1_mbqvv"]
+[ext_resource type="Script" uid="uid://3gpuo0htqkeg" path="res://scripts/dart_trap.gd" id="1_mlhi7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mlhi7"]
+atlas = ExtResource("1_mbqvv")
+region = Rect2(256, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7p0m"]
+atlas = ExtResource("1_mbqvv")
+region = Rect2(96, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rrlpr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mlhi7")
+}],
+"loop": 1,
+"name": &"sand_invert",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7p0m")
+}],
+"loop": 1,
+"name": &"sand_normal",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hacw"]
+size = Vector2(8, 16)
+
+[node name="DartTrap" type="StaticBody2D" unique_id=1722376389]
+script = ExtResource("1_mlhi7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=377279730]
+sprite_frames = SubResource("SpriteFrames_rrlpr")
+animation = &"sand_invert"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2019412472]
+position = Vector2(4, 0)
+shape = SubResource("RectangleShape2D_0hacw")
+
+[node name="ArrowSpawn" type="Node2D" parent="." unique_id=1152868157]
