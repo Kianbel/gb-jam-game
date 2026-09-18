@@ -2,15 +2,15 @@
 
 [ext_resource type="Script" uid="uid://cmx0eabybwn6k" path="res://scripts/player.gd" id="1_qhqgy"]
 [ext_resource type="PackedScene" uid="uid://4ten16o0e58f" path="res://scenes/components/hurtbox_component.tscn" id="2_g2els"]
-[ext_resource type="Texture2D" uid="uid://cbig3cr5hye0v" path="res://assets/16x16_temp_character.png" id="2_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://br4dk1ywd78jb" path="res://assets/sand_tileset.png" id="2_qhqgy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
 atlas = ExtResource("2_qhqgy")
-region = Rect2(32, 0, 16, 16)
+region = Rect2(192, 32, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
 atlas = ExtResource("2_qhqgy")
-region = Rect2(16, 0, 16, 16)
+region = Rect2(32, 32, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0hacw"]
 animations = [{
@@ -24,7 +24,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qhqgy")
+"texture": SubResource("AtlasTexture_qlg0r")
 }],
 "loop": 1,
 "name": &"normal_idle",

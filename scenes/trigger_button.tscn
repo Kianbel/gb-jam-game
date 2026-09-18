@@ -1,29 +1,87 @@
 [gd_scene format=3 uid="uid://b0cwgm7o46k7y"]
 
-[ext_resource type="Texture2D" uid="uid://ca582qd42k6ge" path="res://assets/kenney_simplified-platformer-pack/PNG/Tiles/platformPack_tile053.png" id="1_mi6dp"]
 [ext_resource type="Script" uid="uid://dvskrhw5kp42l" path="res://scripts/button.gd" id="1_rhj8v"]
+[ext_resource type="Texture2D" uid="uid://br4dk1ywd78jb" path="res://assets/sand_tileset.png" id="2_2ajsq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8ye8"]
+atlas = ExtResource("2_2ajsq")
+region = Rect2(288, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6roo"]
+atlas = ExtResource("2_2ajsq")
+region = Rect2(288, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ya238"]
+atlas = ExtResource("2_2ajsq")
+region = Rect2(288, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sue2q"]
+atlas = ExtResource("2_2ajsq")
+region = Rect2(128, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8otxy"]
+atlas = ExtResource("2_2ajsq")
+region = Rect2(128, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8sfwg"]
+atlas = ExtResource("2_2ajsq")
+region = Rect2(128, 96, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rrlpr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8ye8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e6roo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ya238")
+}],
+"loop": 0,
+"name": &"sand_inverted",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sue2q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8otxy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8sfwg")
+}],
+"loop": 0,
+"name": &"sand_normal",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rrlpr"]
-size = Vector2(54, 14)
+size = Vector2(16, 4)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0hacw"]
-radius = 18.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_todmr"]
+size = Vector2(12, 6)
 
 [node name="TriggerButton" type="StaticBody2D" unique_id=379421292]
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_rhj8v")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=89361386]
-texture = ExtResource("1_mi6dp")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=342875323]
+sprite_frames = SubResource("SpriteFrames_rrlpr")
+animation = &"sand_inverted"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1960869653]
-position = Vector2(0, 25)
+position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_rrlpr")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1736388735]
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=68295991]
-position = Vector2(0, 17)
-shape = SubResource("CircleShape2D_0hacw")
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_todmr")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

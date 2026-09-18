@@ -7,6 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://8v135ehyw76x" path="res://scenes/player.tscn" id="4_x42e6"]
 [ext_resource type="PackedScene" uid="uid://b4docjp5doas8" path="res://scenes/ingame_ui.tscn" id="5_6761a"]
 [ext_resource type="PackedScene" uid="uid://bw4xcncfigb7s" path="res://scenes/next_level.tscn" id="5_sk5k4"]
+[ext_resource type="PackedScene" uid="uid://b0cwgm7o46k7y" path="res://scenes/trigger_button.tscn" id="8_s8va5"]
+[ext_resource type="PackedScene" uid="uid://8cqmq3vbipvd" path="res://scenes/components/hitbox_component.tscn" id="9_dga24"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rrlpr"]
 
 [node name="Level1" type="Node2D" unique_id=1603342087 node_paths=PackedStringArray("inverted_domain", "noninverted_domain", "inverted_tilemaplayer", "noninverted_tilemaplayer")]
 script = ExtResource("1_5xbjy")
@@ -18,15 +22,31 @@ noninverted_tilemaplayer = NodePath("NonInverted/TileMapLayer")
 [node name="Inverted" parent="." unique_id=531270631 instance=ExtResource("2_4nkto")]
 
 [node name="TileMapLayer" parent="Inverted" index="0" unique_id=1180848138]
-tile_map_data = PackedByteArray("AAD7/wgAAQAHAAEAAAD8/wgAAQAHAAUAAAD9/wgAAQAKAAUAAAD+/wgAAQAIAAEAAAD//wgAAQAHAAUAAAAAAAgAAQAKAAUAAAABAAgAAQAHAAUAAAADAAgAAQAKAAUAAAACAAgAAQAIAAEAAAAEAAgAAQAHAAUAAAAFAAgAAQAHAAUAAAAGAAgAAQAKAAUAAAAHAAgAAQAIAAEAAAAIAAgAAQAIAAEAAAAJAAgAAQAHAAUAAAAKAAgAAQAHAAUAAAALAAgAAQAHAAUAAAAMAAgAAQAKAAUAAAANAAgAAQAJAAEAAAD7/wkAAQAHAAMAAAD8/wkAAQAIAAMAAAD9/wkAAQAIAAMAAAD+/wkAAQAIAAMAAAD//wkAAQAIAAMAAAAAAAkAAQAIAAMAAAABAAkAAQAIAAMAAAACAAkAAQAIAAMAAAADAAkAAQAIAAMAAAAEAAkAAQAIAAMAAAAFAAkAAQAIAAMAAAAGAAkAAQAIAAMAAAAHAAkAAQAIAAMAAAAIAAkAAQAIAAMAAAAJAAkAAQAIAAMAAAAKAAkAAQAIAAMAAAALAAkAAQAIAAMAAAAMAAkAAQAIAAMAAAANAAkAAQAJAAMAAAA=")
+tile_map_data = PackedByteArray("AAD7/wgAAQALAAMAAAD8/wgAAQAMAAMAAAD9/wgAAQAMAAMAAAD+/wgAAQAMAAMAAAD//wgAAQAMAAMAAAAAAAgAAQAMAAMAAAABAAgAAQAMAAMAAAACAAgAAQAMAAMAAAADAAgAAQAMAAMAAAAEAAgAAQAMAAMAAAAFAAgAAQAMAAMAAAAGAAgAAQAMAAMAAAAHAAgAAQAMAAMAAAAIAAgAAQAMAAMAAAAJAAgAAQAMAAMAAAAKAAgAAQAMAAMAAAALAAgAAQAMAAMAAAAMAAgAAQAMAAMAAAANAAgAAQANAAMAAAANAAkAAQANAAUAAAAMAAkAAQAMAAUAAAALAAkAAQAMAAUAAAAKAAkAAQAMAAUAAAAJAAkAAQAMAAUAAAAIAAkAAQAMAAUAAAAHAAkAAQAMAAUAAAAGAAkAAQAMAAUAAAAFAAkAAQAMAAUAAAAEAAkAAQAMAAUAAAADAAkAAQAMAAUAAAACAAkAAQAMAAUAAAABAAkAAQAMAAUAAAAAAAkAAQAMAAUAAAD//wkAAQAMAAUAAAD+/wkAAQAMAAUAAAD9/wkAAQAMAAUAAAD8/wkAAQAMAAUAAAD7/wkAAQALAAUAAAA=")
 
 [node name="NonInverted" parent="." unique_id=1508748417 instance=ExtResource("3_fcfvj")]
 
 [node name="TileMapLayer" parent="NonInverted" index="0" unique_id=2026888511]
-tile_map_data = PackedByteArray("AAD7/wgAAQABAAEAAAD8/wgAAQAEAAUAAAD9/wgAAQAEAAUAAAD+/wgAAQACAAEAAAAFAAgAAQABAAUAAAAGAAgAAQABAAUAAAAEAAgAAQAEAAUAAAADAAgAAQACAAEAAAACAAgAAQACAAEAAAABAAgAAQABAAUAAAAAAAgAAQAEAAUAAAD//wgAAQABAAUAAAAHAAgAAQABAAUAAAAIAAgAAQABAAUAAAAJAAgAAQACAAEAAAAKAAgAAQACAAEAAAAMAAgAAQABAAUAAAANAAgAAQADAAEAAAALAAgAAQABAAUAAAD7/wkAAQABAAMAAAD8/wkAAQACAAMAAAD9/wkAAQACAAMAAAD+/wkAAQACAAMAAAD//wkAAQACAAMAAAAAAAkAAQACAAMAAAABAAkAAQACAAMAAAACAAkAAQACAAMAAAADAAkAAQACAAMAAAAEAAkAAQACAAMAAAAFAAkAAQACAAMAAAAGAAkAAQACAAMAAAAHAAkAAQACAAMAAAAIAAkAAQACAAMAAAAJAAkAAQACAAMAAAAKAAkAAQACAAMAAAALAAkAAQACAAMAAAAMAAkAAQACAAMAAAANAAkAAQADAAMAAAA=")
+tile_map_data = PackedByteArray("AAD7/wkAAQABAAUAAAD8/wkAAQACAAUAAAD9/wkAAQACAAUAAAD+/wkAAQACAAUAAAD//wkAAQACAAUAAAAAAAkAAQACAAUAAAABAAkAAQACAAUAAAACAAkAAAACAAUAAAADAAgAAAACAAMAAAADAAkAAAACAAUAAAAEAAgAAQACAAMAAAAEAAkAAQACAAUAAAAFAAgAAQACAAMAAAAFAAkAAQACAAUAAAAGAAgAAQACAAMAAAAGAAkAAQACAAUAAAAHAAgAAQACAAMAAAAHAAkAAQACAAUAAAAIAAgAAQACAAMAAAAIAAkAAQACAAUAAAAJAAgAAQACAAMAAAAJAAkAAQACAAUAAAAKAAgAAQACAAMAAAAKAAkAAQACAAUAAAALAAgAAQACAAMAAAALAAkAAQACAAUAAAAMAAgAAQACAAMAAAAMAAkAAQACAAUAAAANAAgAAQADAAMAAAANAAkAAQADAAUAAAD7/wgAAQABAAMAAAD8/wgAAQACAAMAAAD9/wgAAQACAAMAAAD+/wgAAQACAAMAAAD//wgAAQACAAMAAAAAAAgAAQACAAMAAAABAAgAAQACAAMAAAACAAgAAAACAAMAAAA=")
 
-[node name="Spike" parent="NonInverted" unique_id=610234305 instance=ExtResource("4_oc4kc")]
-position = Vector2(56, 120)
+[node name="Spike" parent="NonInverted" unique_id=610234305 node_paths=PackedStringArray("trigger") instance=ExtResource("4_oc4kc")]
+position = Vector2(24, 121)
+trigger = NodePath("../TriggerButton")
+
+[node name="Spike2" parent="NonInverted" unique_id=1223215915 node_paths=PackedStringArray("trigger") instance=ExtResource("4_oc4kc")]
+position = Vector2(40, 121)
+trigger = NodePath("../TriggerButton")
+
+[node name="Spike3" parent="NonInverted" unique_id=937704251 node_paths=PackedStringArray("trigger") instance=ExtResource("4_oc4kc")]
+position = Vector2(56, 121)
+trigger = NodePath("../TriggerButton")
+
+[node name="Spike4" parent="NonInverted" unique_id=364502496 node_paths=PackedStringArray("trigger") instance=ExtResource("4_oc4kc")]
+position = Vector2(72, 121)
+trigger = NodePath("../TriggerButton")
+
+[node name="TriggerButton" parent="NonInverted" unique_id=379421292 instance=ExtResource("8_s8va5")]
+position = Vector2(-8, 121)
 
 [node name="NextLevel" parent="." unique_id=2104726176 instance=ExtResource("5_sk5k4")]
 position = Vector2(200, 120)
@@ -35,6 +55,14 @@ position = Vector2(200, 120)
 position = Vector2(-40, 104)
 
 [node name="IngameUI" parent="." unique_id=73858269 instance=ExtResource("5_6761a")]
+
+[node name="HitboxComponent" parent="." unique_id=2015609645 instance=ExtResource("9_dga24")]
+position = Vector2(53, 176)
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=1240305856]
+shape = SubResource("WorldBoundaryShape2D_rrlpr")
 
 [editable path="Inverted"]
 [editable path="NonInverted"]
