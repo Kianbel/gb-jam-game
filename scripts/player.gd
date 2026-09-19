@@ -23,11 +23,14 @@ const INVERTED_COLLISION := 3
 var coyote_timer := 0.0
 var jump_buffer_timer := 0.0
 
+var is_input_disabled = false
+
 @onready var current_level: Level = get_parent()
 @onready var inverts_amount: int = current_level.MAX_INVERTS
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hurtbox: Area2D = $HurtboxComponent
+@onready var camera: Camera2D = $Camera2D
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("invert_level"):
@@ -36,15 +39,20 @@ func _process(_delta: float) -> void:
 		
 
 func _physics_process(delta: float) -> void:
-	update_coyote_time(delta)
-	update_jump_buffer(delta)
+	if !is_input_disabled:
+		update_coyote_time(delta)
+		update_jump_buffer(delta)
 
-	handle_jump()
+		handle_jump()
+		handle_movement(delta)
+		update_sprite()
+
 	handle_gravity(delta)
-	handle_movement(delta)
-	update_sprite()
-
 	move_and_slide()
+
+func set_camera_limit_bottom(limit: int = 100000000):
+	if camera:
+		camera.limit_bottom = limit
 
 func update_coyote_time(delta: float) -> void:
 	if is_on_floor():
