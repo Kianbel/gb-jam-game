@@ -5,6 +5,12 @@ extends StaticBody2D
 
 @export var trigger: TriggerButton
 
+enum DIRECTION {
+	UP,DOWN,LEFT,RIGHT
+}
+
+@export var direction: DIRECTION = DIRECTION.LEFT
+
 const NORMAL_COLLISION = 2
 const INVERTED_COLLISION = 3
 var is_inverted = false
@@ -38,6 +44,9 @@ func setup():
 func shoot():
 	if not has_shot:
 		var arrow = arrow_scene.instantiate()
+		arrow.direction = direction
+		arrow.set_global_rotation_degrees(global_rotation_degrees)
+		
 		arrow.global_position = arrow_spawn.global_position
 		get_parent().add_child(arrow)
 		has_shot = true

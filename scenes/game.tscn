@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://cshrpjtxeqwo2"]
 
-[ext_resource type="Script" uid="uid://dr7ig8dmym5it" path="res://scripts/game.gd" id="1_iywne"]
+[ext_resource type="Script" uid="uid://2siiee6dgxio" path="res://scripts/game.gd" id="1_iywne"]
 [ext_resource type="PackedScene" uid="uid://bjyrq71v8y0ll" path="res://scenes/level.tscn" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://8v135ehyw76x" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://b0cwgm7o46k7y" path="res://scenes/trigger_button.tscn" id="3_lbhrr"]
@@ -39,14 +39,14 @@ position = Vector2(-800, 608)
 [node name="LowerBoundary" parent="Level" index="2" unique_id=2015609645]
 position = Vector2(32, 928)
 
-[node name="Player" parent="Level" unique_id=667181375 instance=ExtResource("1_uwrxv")]
-position = Vector2(-992, 480)
-collision_mask = 10
-
-[node name="Camera2D" type="Camera2D" parent="Level/Player" unique_id=2131322368]
+[node name="Camera2D2" type="Camera2D" parent="Level/Player" parent_id_path=PackedInt32Array(1450436430, 667181375) index="4" unique_id=2131322368]
 position = Vector2(0, -192)
 zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
+
+[node name="Player2" parent="Level" unique_id=667181375 instance=ExtResource("1_uwrxv")]
+position = Vector2(-992, 480)
+collision_mask = 10
 
 [editable path="Level"]
 [editable path="Level/Inverted"]

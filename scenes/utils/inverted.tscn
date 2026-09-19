@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://7uxy3ia74fh"]
 
-[ext_resource type="Script" uid="uid://bllrla6g1yt7r" path="res://scripts/inverted.gd" id="1_3q1nm"]
+[ext_resource type="Script" uid="uid://tiqgfsxmusvx" path="res://scripts/inverted.gd" id="1_3q1nm"]
 [ext_resource type="Texture2D" uid="uid://br4dk1ywd78jb" path="res://assets/sand_tileset.png" id="2_6xmj2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6xmj2"]
@@ -150,6 +150,9 @@ texture = ExtResource("2_6xmj2")
 17:7/0 = 0
 17:8/0 = 0
 15:8/0 = 0
+15:6/0 = 0
+16:6/0 = 0
+17:6/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2hqvg"]
 resource_name = "full collidable"
@@ -333,6 +336,11 @@ texture = ExtResource("2_6xmj2")
 12:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 11:7/0 = 0
 11:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+14:5/0 = 0
+14:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+15:6/0 = 0
+16:6/0 = 0
+17:6/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_6xmj2"]
 physics_layer_0/collision_layer = 4

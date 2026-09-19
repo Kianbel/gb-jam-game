@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cwm2hsiw5088b"]
 
-[ext_resource type="Script" uid="uid://cw83tc1qqrrfg" path="res://scripts/non_inverted.gd" id="1_q075a"]
+[ext_resource type="Script" uid="uid://ban2haghesf02" path="res://scripts/non_inverted.gd" id="1_q075a"]
 [ext_resource type="Texture2D" uid="uid://br4dk1ywd78jb" path="res://assets/sand_tileset.png" id="2_bvprc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bvprc"]
@@ -351,6 +351,8 @@ texture = ExtResource("2_bvprc")
 1:7/0 = 0
 1:8/0 = 0
 2:8/0 = 0
+4:4/0 = 0
+4:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_rrlpr"]
 physics_layer_0/collision_layer = 2

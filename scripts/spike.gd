@@ -28,8 +28,9 @@ func setup():
 		animated_sprite_2d.frame = randi() % frame_count
 		
 	else:
-		hitbox.set_collision_layer_value(NORMAL_COLLISION, true)
-		hitbox.set_collision_layer_value(INVERTED_COLLISION, false)
+		if hitbox:
+			hitbox.set_collision_layer_value(NORMAL_COLLISION, true)
+			hitbox.set_collision_layer_value(INVERTED_COLLISION, false)
 		animated_sprite_2d.play("sand_normal")
 		animated_sprite_2d.stop()
 		var frame_count: int = animated_sprite_2d.sprite_frames.get_frame_count(animated_sprite_2d.animation)
