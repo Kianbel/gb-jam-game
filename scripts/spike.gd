@@ -29,14 +29,14 @@ func setup():
 		if hitbox:
 			hitbox.set_collision_layer_value(NORMAL_COLLISION, false)
 			hitbox.set_collision_layer_value(INVERTED_COLLISION, true)
-		if parent_group.is_in_group("Cave"): animated_sprite_2d.frame = CAVE_INVERT_SPRITES.pick_random()
+		if parent_group and parent_group.is_in_group("Cave"): animated_sprite_2d.frame = CAVE_INVERT_SPRITES.pick_random()
 		else: animated_sprite_2d.frame = SAND_INVERT_SPRITES.pick_random()
 		
 	else:
 		if hitbox:
 			hitbox.set_collision_layer_value(NORMAL_COLLISION, true)
 			hitbox.set_collision_layer_value(INVERTED_COLLISION, false)
-		if parent_group.is_in_group("Cave"): animated_sprite_2d.frame = CAVE_NORMAL_SPRITES.pick_random()
+		if parent_group and parent_group.is_in_group("Cave"): animated_sprite_2d.frame = CAVE_NORMAL_SPRITES.pick_random()
 		else: animated_sprite_2d.frame = SAND_NORMAL_SPRITES.pick_random()
 
 

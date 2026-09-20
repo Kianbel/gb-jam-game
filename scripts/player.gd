@@ -34,11 +34,11 @@ var old_stage: int = 1
 @onready var hurtbox: Area2D = $HurtboxComponent
 @onready var camera: Camera2D = $Camera2D
 
+var is_cave: bool = false
+
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("invert_level"):
 		handle_invert()
-		
-		
 
 func _physics_process(delta: float) -> void:
 	if !is_input_disabled:
@@ -88,9 +88,11 @@ func handle_gravity(delta: float) -> void:
 		velocity.y += fall_gravity * delta
 		
 	if current_level.is_inverted:
-		animated_sprite_2d.play("invert_jump_" + str(old_stage))
+		if is_cave: animated_sprite_2d.play("cave_invert_jump_" + str(old_stage))
+		else: animated_sprite_2d.play("invert_jump_" + str(old_stage))
 	else:
-		animated_sprite_2d.play("normal_jump_" + str(old_stage))
+		if is_cave: animated_sprite_2d.play("cave_normal_jump_" + str(old_stage))
+		else: animated_sprite_2d.play("normal_jump_" + str(old_stage))
 
 	velocity.y = min(velocity.y, max_fall_speed)
 
@@ -100,21 +102,33 @@ func handle_movement(delta: float) -> void:
 	if direction != 0:
 		if is_on_floor():
 			if current_level.is_inverted:
-				animated_sprite_2d.play("invert_" + str(old_stage))
+				if is_cave: animated_sprite_2d.play("cave_invert_" + str(old_stage))
+				else: animated_sprite_2d.play("invert_" + str(old_stage))
 			else:
-				animated_sprite_2d.play("normal_" + str(old_stage))
+				if is_cave: animated_sprite_2d.play("cave_normal_" + str(old_stage))
+				else: animated_sprite_2d.play("normal_" + str(old_stage))
 		velocity.x = move_toward(velocity.x, direction * speed, acceleration * delta)
 	else:
 		velocity.x = move_toward(velocity.x, 0.0, friction * delta)
 		if is_on_floor():
 			if current_level.is_inverted:
-				animated_sprite_2d.play("invert_" + str(old_stage))
-				animated_sprite_2d.stop()
-				animated_sprite_2d.frame = 0
+				if is_cave:
+					animated_sprite_2d.play("cave_invert_" + str(old_stage))
+					animated_sprite_2d.stop()
+					animated_sprite_2d.frame = 0
+				else:
+					animated_sprite_2d.play("invert_" + str(old_stage))
+					animated_sprite_2d.stop()
+					animated_sprite_2d.frame = 0
 			else:
-				animated_sprite_2d.play("normal_" + str(old_stage))
-				animated_sprite_2d.stop()
-				animated_sprite_2d.frame = 0
+				if is_cave:
+					animated_sprite_2d.play("cave_normal_" + str(old_stage))
+					animated_sprite_2d.stop()
+					animated_sprite_2d.frame = 0
+				else:
+					animated_sprite_2d.play("normal_" + str(old_stage))
+					animated_sprite_2d.stop()
+					animated_sprite_2d.frame = 0
 
 func update_sprite() -> void:
 	if velocity.x < 0:
@@ -131,6 +145,7 @@ func handle_invert() -> void:
 	current_level.invert_level()
 	inverts_amount -= 1
 	old_stage += 1
+	if old_stage > 4: old_stage = 4
 
 	if current_level.is_inverted:
 		set_collision_mask_value(NORMAL_COLLISION, false)
