@@ -3,13 +3,22 @@
 [ext_resource type="Texture2D" uid="uid://br4dk1ywd78jb" path="res://assets/sand_tileset.png" id="1_23jat"]
 [ext_resource type="Script" uid="uid://cllele4qvkoo2" path="res://scripts/arrow.gd" id="1_q8ifc"]
 [ext_resource type="PackedScene" uid="uid://8cqmq3vbipvd" path="res://scenes/components/hitbox_component.tscn" id="1_umosx"]
+[ext_resource type="Texture2D" uid="uid://cqj1lim3331hw" path="res://assets/cave_tileset.png" id="3_7ckq1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q8ifc"]
 atlas = ExtResource("1_23jat")
 region = Rect2(240, 48, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7ckq1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmv1p"]
 atlas = ExtResource("1_23jat")
+region = Rect2(80, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvnur"]
+atlas = ExtResource("3_7ckq1")
+region = Rect2(240, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xlyji"]
+atlas = ExtResource("3_7ckq1")
 region = Rect2(80, 48, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_umosx"]
@@ -17,17 +26,18 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_q8ifc")
-}],
-"loop": 0,
-"name": &"sand_invert",
-"speed": 0.0
 }, {
-"frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7ckq1")
+"texture": SubResource("AtlasTexture_hmv1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvnur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xlyji")
 }],
 "loop": 0,
-"name": &"sand_normal",
+"name": &"default",
 "speed": 0.0
 }]
 
@@ -45,7 +55,6 @@ speed = 350
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=583294622]
 sprite_frames = SubResource("SpriteFrames_umosx")
-animation = &"sand_invert"
 
 [node name="HitboxComponent" parent="." unique_id=2015609645 instance=ExtResource("1_umosx")]
 

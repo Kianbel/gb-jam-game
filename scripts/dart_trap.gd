@@ -51,5 +51,5 @@ func shoot():
 		arrow.set_global_rotation_degrees(global_rotation_degrees)
 		
 		arrow.global_position = arrow_spawn.global_position
-		get_parent().add_child(arrow)
+		get_parent().call_deferred("add_child", arrow)
 		has_shot = true

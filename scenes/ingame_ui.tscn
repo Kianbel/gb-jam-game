@@ -1,12 +1,186 @@
 [gd_scene format=3 uid="uid://b4docjp5doas8"]
 
+[ext_resource type="Texture2D" uid="uid://cqj1lim3331hw" path="res://assets/cave_tileset.png" id="1_031h6"]
+[ext_resource type="Texture2D" uid="uid://br4dk1ywd78jb" path="res://assets/sand_tileset.png" id="1_v3yap"]
+
 [sub_resource type="LabelSettings" id="LabelSettings_arpr7"]
 font_size = 8
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hahea"]
+atlas = ExtResource("1_031h6")
+region = Rect2(176, 240, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70tcv"]
+atlas = ExtResource("1_031h6")
+region = Rect2(192, 256, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ehd4"]
+atlas = ExtResource("1_031h6")
+region = Rect2(208, 256, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qu52g"]
+atlas = ExtResource("1_031h6")
+region = Rect2(224, 256, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjwrn"]
+atlas = ExtResource("1_031h6")
+region = Rect2(192, 240, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r7y21"]
+atlas = ExtResource("1_031h6")
+region = Rect2(16, 240, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4ad5"]
+atlas = ExtResource("1_031h6")
+region = Rect2(32, 256, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmlis"]
+atlas = ExtResource("1_031h6")
+region = Rect2(48, 256, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjjdp"]
+atlas = ExtResource("1_031h6")
+region = Rect2(64, 256, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_55lpn"]
+atlas = ExtResource("1_031h6")
+region = Rect2(32, 240, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3yap"]
+atlas = ExtResource("1_v3yap")
+region = Rect2(176, 240, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cm6yq"]
+atlas = ExtResource("1_v3yap")
+region = Rect2(192, 256, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6424"]
+atlas = ExtResource("1_v3yap")
+region = Rect2(208, 256, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uyn70"]
+atlas = ExtResource("1_v3yap")
+region = Rect2(224, 256, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrj12"]
+atlas = ExtResource("1_v3yap")
+region = Rect2(192, 240, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_031h6"]
+atlas = ExtResource("1_v3yap")
+region = Rect2(16, 240, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2rwu"]
+atlas = ExtResource("1_v3yap")
+region = Rect2(32, 256, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hifx3"]
+atlas = ExtResource("1_v3yap")
+region = Rect2(48, 256, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_npobg"]
+atlas = ExtResource("1_v3yap")
+region = Rect2(64, 256, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i42rf"]
+atlas = ExtResource("1_v3yap")
+region = Rect2(32, 240, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rrlpr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hahea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70tcv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ehd4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qu52g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjwrn")
+}],
+"loop": 0,
+"name": &"cave_invert",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r7y21")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4ad5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wmlis")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjjdp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55lpn")
+}],
+"loop": 0,
+"name": &"cave_normal",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v3yap")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cm6yq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6424")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uyn70")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yrj12")
+}],
+"loop": 0,
+"name": &"sand_invert",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_031h6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2rwu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hifx3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_npobg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i42rf")
+}],
+"loop": 0,
+"name": &"sand_normal",
+"speed": 0.0
+}]
 
 [node name="IngameUI" type="CanvasLayer" unique_id=73858269]
 
 [node name="InvertsLeftLabel" type="Label" parent="." unique_id=1886008058]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 19.0
+offset_top = 5.0
+offset_right = 69.0
+offset_bottom = 28.0
 text = "Inverts left: n"
 label_settings = SubResource("LabelSettings_arpr7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1663949327]
+position = Vector2(20, 13)
+sprite_frames = SubResource("SpriteFrames_rrlpr")
+animation = &"sand_invert"
+offset = Vector2(-11, -4)
