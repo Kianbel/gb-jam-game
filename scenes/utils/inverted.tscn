@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://7uxy3ia74fh"]
 
-[ext_resource type="Script" uid="uid://tiqgfsxmusvx" path="res://scripts/inverted.gd" id="1_3q1nm"]
+[ext_resource type="Script" uid="uid://bllrla6g1yt7r" path="res://scripts/inverted.gd" id="1_3q1nm"]
 [ext_resource type="Texture2D" uid="uid://br4dk1ywd78jb" path="res://assets/sand_tileset.png" id="2_6xmj2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6xmj2"]
@@ -403,6 +403,8 @@ texture = ExtResource("2_6xmj2")
 15:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 15:5/0/terrains_peering_bit/right_side = 0
 15:5/0/terrains_peering_bit/left_side = 0
+16:8/0 = 0
+16:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -3, -8, -3)
 
 [sub_resource type="TileSet" id="TileSet_6xmj2"]
 physics_layer_0/collision_layer = 4

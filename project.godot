@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GBJamGame"
-run/main_scene="uid://derm2k3lwnvo5"
+run/main_scene="uid://4ixd2x6ptu1o"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -22,6 +22,10 @@ window/size/viewport_height=144
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
+
+[global_group]
+
+Cave=""
 
 [input]
 

@@ -18,17 +18,17 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_q8ifc")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"sand_invert",
-"speed": 5.0
+"speed": 0.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7ckq1")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"sand_normal",
-"speed": 5.0
+"speed": 0.0
 }]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_hmv1p"]
@@ -45,7 +45,7 @@ speed = 350
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=583294622]
 sprite_frames = SubResource("SpriteFrames_umosx")
-animation = &"sand_normal"
+animation = &"sand_invert"
 
 [node name="HitboxComponent" parent="." unique_id=2015609645 instance=ExtResource("1_umosx")]
 
@@ -56,5 +56,3 @@ shape = SubResource("SegmentShape2D_hmv1p")
 visible = false
 shape = SubResource("SegmentShape2D_q8ifc")
 disabled = true
-
-[connection signal="body_entered" from="HitboxComponent" to="." method="_on_hitbox_component_body_entered"]

@@ -47,5 +47,6 @@ func _on_chest_walk() -> void:
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	player.is_input_disabled = false
-	queue_free()
+	if player:
+		player.is_input_disabled = false
+		queue_free()

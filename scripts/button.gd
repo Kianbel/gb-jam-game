@@ -21,19 +21,35 @@ func setup():
 		area2d.set_collision_layer_value(NORMAL_COLLISION, false)
 		area2d.set_collision_layer_value(INVERTED_COLLISION, true)
 		is_inverted = true
-		animated_sprite_2d.play("sand_inverted")
-		animated_sprite_2d.stop()
-		animated_sprite_2d.frame = 0
+		if parent_group.is_in_group("Cave"):
+			animated_sprite_2d.play("cave_inverted")
+			animated_sprite_2d.stop()
+			animated_sprite_2d.frame = 0
+		else:
+			animated_sprite_2d.play("sand_inverted")
+			animated_sprite_2d.stop()
+			animated_sprite_2d.frame = 0
 	else:
 		area2d.set_collision_layer_value(NORMAL_COLLISION, true)
 		area2d.set_collision_layer_value(INVERTED_COLLISION, false)
-		animated_sprite_2d.play("sand_normal")
-		animated_sprite_2d.stop()
-		animated_sprite_2d.frame = 0
+		if parent_group.is_in_group("Cave"):
+			animated_sprite_2d.play("cave_normal")
+			animated_sprite_2d.stop()
+			animated_sprite_2d.frame = 0
+		else:
+			animated_sprite_2d.play("sand_normal")
+			animated_sprite_2d.stop()
+			animated_sprite_2d.frame = 0
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if not is_pushed && body is Player:
 		is_pushed = true
-		if is_inverted: animated_sprite_2d.play("sand_inverted")
-		else: animated_sprite_2d.play("sand_normal")
+		
+		var parent_group = $".."
+		if parent_group.is_in_group("Cave"):
+			if is_inverted: animated_sprite_2d.play("cave_inverted")
+			else: animated_sprite_2d.play("cave_normal")
+		else:
+			if is_inverted: animated_sprite_2d.play("sand_inverted")
+			else: animated_sprite_2d.play("sand_normal")

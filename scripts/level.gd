@@ -10,6 +10,8 @@ var is_inverted: bool = false
 @export var noninverted_tilemaplayer: TileMapLayer
 
 @onready var player = $Player
+@export var parallax: Parallax2D
+
 
 func _ready() -> void:
 	inverted_domain.visible = false
@@ -25,3 +27,10 @@ func invert_level() -> void:
 	noninverted_domain.visible = !noninverted_domain.visible
 	inverted_tilemaplayer.enabled = !inverted_tilemaplayer.enabled
 	noninverted_tilemaplayer.enabled = !noninverted_tilemaplayer.enabled
+	
+	# change bg
+	const normal = 0
+	const inverted = 1
+	var bg: AnimatedSprite2D = parallax.get_node("AnimatedSprite2D")
+	bg.frame = inverted if is_inverted else normal
+	

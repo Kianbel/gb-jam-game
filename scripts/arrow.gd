@@ -15,6 +15,9 @@ const NORMAL_COLLISION = 2
 const INVERTED_COLLISION = 3
 var is_inverted = false
 
+const sand_invert_sprite = 0
+const sand_normal_sprite = 1
+
 func _ready() -> void:
 	setup()
 	
@@ -35,15 +38,9 @@ func setup():
 		is_inverted = true
 		hitbox.set_collision_layer_value(NORMAL_COLLISION, false)
 		hitbox.set_collision_layer_value(INVERTED_COLLISION, true)
-		animated_sprite.play("sand_invert")
-		animated_sprite.stop()
+		animated_sprite.frame = sand_invert_sprite
 		
 	else:
 		hitbox.set_collision_layer_value(NORMAL_COLLISION, true)
 		hitbox.set_collision_layer_value(INVERTED_COLLISION, false)
-		animated_sprite.play("sand_normal")
-		animated_sprite.stop()
-
-
-func _on_hitbox_component_body_entered(body: Node2D) -> void:
-	pass
+		animated_sprite.frame = sand_normal_sprite

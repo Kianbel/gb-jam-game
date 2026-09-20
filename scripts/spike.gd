@@ -10,6 +10,12 @@ var is_triggered = false;
 const NORMAL_COLLISION = 2
 const INVERTED_COLLISION = 3
 
+const SAND_INVERT_SPRITES = [0,1]
+const SAND_NORMAL_SPRITES = [2,3]
+const CAVE_INVERT_SPRITES = [4,5]
+const CAVE_NORMAL_SPRITES = [6,7]
+
+
 func _ready() -> void:
 	if trigger:
 		visible = false
@@ -20,21 +26,18 @@ func _ready() -> void:
 func setup():
 	var parent_group = $".."
 	if parent_group is InvertedGroup:
-		hitbox.set_collision_layer_value(NORMAL_COLLISION, false)
-		hitbox.set_collision_layer_value(INVERTED_COLLISION, true)
-		animated_sprite_2d.play("sand_inverted")
-		animated_sprite_2d.stop()
-		var frame_count: int = animated_sprite_2d.sprite_frames.get_frame_count(animated_sprite_2d.animation)
-		animated_sprite_2d.frame = randi() % frame_count
+		if hitbox:
+			hitbox.set_collision_layer_value(NORMAL_COLLISION, false)
+			hitbox.set_collision_layer_value(INVERTED_COLLISION, true)
+		if parent_group.is_in_group("Cave"): animated_sprite_2d.frame = CAVE_INVERT_SPRITES.pick_random()
+		else: animated_sprite_2d.frame = SAND_INVERT_SPRITES.pick_random()
 		
 	else:
 		if hitbox:
 			hitbox.set_collision_layer_value(NORMAL_COLLISION, true)
 			hitbox.set_collision_layer_value(INVERTED_COLLISION, false)
-		animated_sprite_2d.play("sand_normal")
-		animated_sprite_2d.stop()
-		var frame_count: int = animated_sprite_2d.sprite_frames.get_frame_count(animated_sprite_2d.animation)
-		animated_sprite_2d.frame = randi() % frame_count
+		if parent_group.is_in_group("Cave"): animated_sprite_2d.frame = CAVE_NORMAL_SPRITES.pick_random()
+		else: animated_sprite_2d.frame = SAND_NORMAL_SPRITES.pick_random()
 
 
 func on_trap_triggered():

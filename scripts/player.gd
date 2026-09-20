@@ -25,6 +25,8 @@ var jump_buffer_timer := 0.0
 
 var is_input_disabled = false
 
+var old_stage: int = 1
+
 @onready var current_level: Level = get_parent()
 @onready var inverts_amount: int = current_level.MAX_INVERTS
 
@@ -84,6 +86,11 @@ func handle_gravity(delta: float) -> void:
 		velocity.y += gravity * delta
 	else:
 		velocity.y += fall_gravity * delta
+		
+	if current_level.is_inverted:
+		animated_sprite_2d.play("invert_jump_" + str(old_stage))
+	else:
+		animated_sprite_2d.play("normal_jump_" + str(old_stage))
 
 	velocity.y = min(velocity.y, max_fall_speed)
 
@@ -91,9 +98,23 @@ func handle_movement(delta: float) -> void:
 	var direction := Input.get_axis("left", "right")
 
 	if direction != 0:
+		if is_on_floor():
+			if current_level.is_inverted:
+				animated_sprite_2d.play("invert_" + str(old_stage))
+			else:
+				animated_sprite_2d.play("normal_" + str(old_stage))
 		velocity.x = move_toward(velocity.x, direction * speed, acceleration * delta)
 	else:
 		velocity.x = move_toward(velocity.x, 0.0, friction * delta)
+		if is_on_floor():
+			if current_level.is_inverted:
+				animated_sprite_2d.play("invert_" + str(old_stage))
+				animated_sprite_2d.stop()
+				animated_sprite_2d.frame = 0
+			else:
+				animated_sprite_2d.play("normal_" + str(old_stage))
+				animated_sprite_2d.stop()
+				animated_sprite_2d.frame = 0
 
 func update_sprite() -> void:
 	if velocity.x < 0:
@@ -109,6 +130,7 @@ func handle_invert() -> void:
 
 	current_level.invert_level()
 	inverts_amount -= 1
+	old_stage += 1
 
 	if current_level.is_inverted:
 		set_collision_mask_value(NORMAL_COLLISION, false)

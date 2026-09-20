@@ -19,6 +19,11 @@ var has_shot = false
 
 const arrow_scene = preload("res://scenes/arrow.tscn")
 
+const SAND_INVERT_SPRITE = 0
+const SAND_NORMAL_SPRITE = 1
+const CAVE_INVERT_SPRITE = 2
+const CAVE_NORMAL_SPRITE = 3
+
 func _ready() -> void:
 	setup()
 
@@ -31,15 +36,13 @@ func setup():
 		set_collision_layer_value(NORMAL_COLLISION, false)
 		set_collision_layer_value(INVERTED_COLLISION, true)
 		is_inverted = true
-		animated_sprite.play("sand_invert")
-		animated_sprite.stop()
-		animated_sprite.frame = 0
+		if parent_group.is_in_group("Cave"): animated_sprite.frame = CAVE_INVERT_SPRITE
+		else: animated_sprite.frame = SAND_INVERT_SPRITE
 	else:
 		set_collision_layer_value(NORMAL_COLLISION, true)
 		set_collision_layer_value(INVERTED_COLLISION, false)
-		animated_sprite.play("sand_normal")
-		animated_sprite.stop()
-		animated_sprite.frame = 0
+		if parent_group.is_in_group("Cave"): animated_sprite.frame = CAVE_NORMAL_SPRITE
+		else: animated_sprite.frame = SAND_NORMAL_SPRITE
 
 func shoot():
 	if not has_shot:

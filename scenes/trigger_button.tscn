@@ -2,6 +2,31 @@
 
 [ext_resource type="Script" uid="uid://dvskrhw5kp42l" path="res://scripts/button.gd" id="1_rhj8v"]
 [ext_resource type="Texture2D" uid="uid://br4dk1ywd78jb" path="res://assets/sand_tileset.png" id="2_2ajsq"]
+[ext_resource type="Texture2D" uid="uid://cqj1lim3331hw" path="res://assets/cave_tileset.png" id="2_w8ye8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fftsj"]
+atlas = ExtResource("2_w8ye8")
+region = Rect2(288, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83lnq"]
+atlas = ExtResource("2_w8ye8")
+region = Rect2(288, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gip6h"]
+atlas = ExtResource("2_w8ye8")
+region = Rect2(288, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_todmr"]
+atlas = ExtResource("2_w8ye8")
+region = Rect2(128, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_36qmo"]
+atlas = ExtResource("2_w8ye8")
+region = Rect2(128, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e21qx"]
+atlas = ExtResource("2_w8ye8")
+region = Rect2(128, 96, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w8ye8"]
 atlas = ExtResource("2_2ajsq")
@@ -29,6 +54,34 @@ region = Rect2(128, 96, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rrlpr"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fftsj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83lnq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gip6h")
+}],
+"loop": 0,
+"name": &"cave_inverted",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_todmr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_36qmo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e21qx")
+}],
+"loop": 0,
+"name": &"cave_normal",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_w8ye8")
@@ -71,7 +124,7 @@ script = ExtResource("1_rhj8v")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=342875323]
 sprite_frames = SubResource("SpriteFrames_rrlpr")
-animation = &"sand_inverted"
+animation = &"cave_inverted"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1960869653]
 position = Vector2(0, 7)
