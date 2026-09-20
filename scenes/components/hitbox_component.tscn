@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cp7c47wos0kfr" path="res://scripts/hitbox_component.gd" id="1_okvui"]
 
 [node name="HitboxComponent" type="Area2D" unique_id=2015609645]
+collision_mask = 9
 script = ExtResource("1_okvui")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

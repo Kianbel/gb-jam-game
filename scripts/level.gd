@@ -16,9 +16,9 @@ var is_inverted: bool = false
 func _ready() -> void:
 	inverted_domain.visible = false
 	inverted_tilemaplayer.enabled = false
-	player.is_cave = true
+	if get_child(1).is_in_group("Cave"): player.is_cave = true
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var inverts_left = $Player.inverts_amount
 	$IngameUI/InvertsLeftLabel.text = "Inverts left: " + str(inverts_left)
 

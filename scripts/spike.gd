@@ -2,8 +2,9 @@ extends Trap
 
 @export var trigger: TriggerButton
 
-@onready var hitbox = $HitboxComponent
+
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+var hitbox: Hitbox
 
 var is_triggered = false;
 
@@ -17,6 +18,9 @@ const CAVE_NORMAL_SPRITES = [6,7]
 
 
 func _ready() -> void:
+	if get_child(-1) is Hitbox:
+		hitbox = get_child(-1)
+	
 	if trigger:
 		visible = false
 		trigger.button_triggered.connect(on_trap_triggered)
