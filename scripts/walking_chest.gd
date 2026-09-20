@@ -30,6 +30,9 @@ func _on_player_detector_body_entered(body: Node2D) -> void:
 		player.is_input_disabled = true
 		player.velocity.x = 0
 		player.velocity.y = 0
+		player.animated_sprite_2d.play("invert_1")
+		player.animated_sprite_2d.stop()
+		player.animated_sprite_2d.frame = 0
 		player.set_camera_limit_bottom(440)
 
 func _on_saw_player() -> void:

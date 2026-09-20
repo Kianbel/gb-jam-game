@@ -34,8 +34,6 @@ func _process(_delta: float) -> void:
 		ui_animated_sprite.frame = clampi(int(round(mapped)), 0, MAX_INVERTS)
 	else:
 		ui_animated_sprite.frame = 4
-			
-
 
 func invert_level() -> void:
 	is_inverted = !is_inverted

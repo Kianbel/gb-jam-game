@@ -172,6 +172,7 @@ animations = [{
 [node name="IngameUI" type="CanvasLayer" unique_id=73858269]
 
 [node name="InvertsLeftLabel" type="Label" parent="." unique_id=1886008058]
+visible = false
 offset_left = 19.0
 offset_top = 5.0
 offset_right = 69.0
