@@ -2,6 +2,8 @@ extends StaticBody2D
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
+@onready var ending_sfx: AudioStream = load("res://sounds/screen_transition.wav")
+
 var on_saw_player = false
 
 var player: Player = null
@@ -14,6 +16,7 @@ var player: Player = null
 func saw_player():
 	animated_sprite.play("default")
 	endingText1.visible = true
+	SoundManager.play_sound(ending_sfx, 1.0, 1.0, -10)
 	timer.start(6)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
@@ -25,7 +28,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		player.animated_sprite_2d.play("cave_normal_1")
 		player.animated_sprite_2d.stop()
 		player.animated_sprite_2d.frame = 0
-		
 		saw_player()
 
 func _on_timer_timeout() -> void:

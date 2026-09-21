@@ -20,6 +20,8 @@ var amplitude = 2.5
 
 var selected: Button
 
+@onready var selection_sfx = load("res://sounds/jump.wav")
+
 func _ready() -> void:
 	selected = start_button
 
@@ -37,12 +39,16 @@ func _process(delta: float) -> void:
 		exit_button.scale = lerp(exit_button.scale, defaultButtonScale, lerpWeight * delta)
 
 func handle_input():
+	var pitch = 2
 	if Input.is_action_just_pressed("click"):
+		SoundManager.play_sound(selection_sfx, pitch, pitch, -10)
 		selected.pressed.emit()
 	elif Input.is_action_just_pressed("up"):
+		SoundManager.play_sound(selection_sfx, pitch, pitch, -10)
 		selector.global_position = start_position.global_position - Vector2(0, selector.size.y / 2.0)
 		selected = start_button
 	elif Input.is_action_just_pressed("down"):
+		SoundManager.play_sound(selection_sfx, pitch, pitch, -10)
 		selector.global_position = end_position.global_position - Vector2(0, selector.size.y / 2.0)
 		selected = exit_button
 

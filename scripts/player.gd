@@ -3,12 +3,10 @@ extends CharacterBody2D
 
 
 
-@export_category("Movement")
 @export var speed := 90.0
 @export var acceleration := 1000.0
 @export var friction := 2000.0
 
-@export_category("Jump")
 @export var jump_velocity := -200.0
 @export var gravity := 700.0
 @export var fall_gravity := 900.0
@@ -26,6 +24,12 @@ var jump_buffer_timer := 0.0
 var is_input_disabled = false
 
 var old_stage: int = 1
+
+@export var invert_sfx: AudioStream
+@export var jump_sfx: AudioStream
+@export var walk_sfx: AudioStream
+@export var death_sfx: AudioStream
+
 
 @onready var current_level: Level = get_parent()
 @onready var inverts_amount: int = current_level.MAX_INVERTS
@@ -50,6 +54,7 @@ func _physics_process(delta: float) -> void:
 		update_sprite()
 
 	handle_gravity(delta)
+	handle_sound()
 	move_and_slide()
 
 func set_camera_limit_bottom(limit: int = 100000000):
@@ -136,9 +141,24 @@ func update_sprite() -> void:
 	elif velocity.x > 0:
 		animated_sprite_2d.flip_h = false
 
+func handle_sound():
+	if Input.is_action_just_pressed("invert_level"):
+		SoundManager.play_sound(invert_sfx, 1.8,1.9, -15)
+	
+	if Input.is_action_just_pressed("jump"):
+		SoundManager.play_sound(jump_sfx, 2.3, 2.4, -10)
+	
+	if is_on_floor() and abs(velocity.x) > 10.0:
+		if $Audio/StepTimer.is_stopped():
+			SoundManager.play_sound(walk_sfx, 0.9, 1.0, -20)
+			$Audio/StepTimer.start(0.35)
+	else:
+		$Audio/StepTimer.stop()
+
 func handle_invert() -> void:
 	if inverts_amount < 1:
 		print("you inverted too much")
+		SoundManager.play_sound(death_sfx, 1.0, 1.1, -10)
 		get_tree().reload_current_scene()
 		return
 

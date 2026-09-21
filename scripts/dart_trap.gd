@@ -3,6 +3,8 @@ extends StaticBody2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var arrow_spawn: Node2D = $ArrowSpawn
 
+@onready var arrow_shoot_sfx: AudioStream = load("res://sounds/walk.wav")
+
 @export var trigger: TriggerButton
 
 enum DIRECTION {
@@ -46,6 +48,7 @@ func setup():
 
 func shoot():
 	if not has_shot:
+		SoundManager.play_sound(arrow_shoot_sfx, 2.5,2.7, -10)
 		var arrow = arrow_scene.instantiate()
 		arrow.direction = direction
 		arrow.set_global_rotation_degrees(global_rotation_degrees)

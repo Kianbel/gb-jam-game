@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="GBJamGame"
-run/main_scene="uid://derm2k3lwnvo5"
+run/main_scene="uid://crlthn16e2jsy"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+SoundManager="*uid://20awknolwgy4"
 
 [display]
 

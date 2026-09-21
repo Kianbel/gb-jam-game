@@ -5,18 +5,21 @@ extends CharacterBody2D
 
 var speed = 100
 
+var go = false
+
 var saw_player = false
 var player: Player = null
 var is_moving = false
 
 func _physics_process(delta: float) -> void:
-	if is_moving:
-		velocity.x += speed * delta
-		
-	if !is_on_floor():
-		velocity.y += speed * 5 * delta
-		
-	move_and_slide()
+	if go:
+		if is_moving:
+			velocity.x += speed * delta
+			
+		if !is_on_floor():
+			velocity.y += speed * 5 * delta
+			
+		move_and_slide()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
@@ -28,6 +31,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		player.animated_sprite_2d.stop()
 		player.animated_sprite_2d.frame = 0
 		timer.start(3)
+		go = true
 
 
 func _on_timer_timeout() -> void:
